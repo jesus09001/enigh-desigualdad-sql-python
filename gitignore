@@ -1,0 +1,3 @@
+# Ignorar archivos CSV dentro de la subcarpeta "data"
+data/*.csv
+data/**/*.csv
