@@ -28,15 +28,16 @@ Utilizando los microdatos oficiales de la **Encuesta Nacional de Ingresos y Gast
 ## 📂 Estructura del Repositorio
 
 ```text
-├── data/                      # Subcarpeta para microdatos (.csv ignorados en git)
-├── output/                    # Visualizaciones estáticas exportadas (.png)
-├── schema.sql                 # Creación de base de datos e importación en MySQL
-├── queries.sql                # Consultas analíticas avanzadas (CTEs, Window Functions, JOINs)
+├── data/                            # Subcarpeta para microdatos (.csv / .parquet)
+├── output/                          # Visualizaciones estáticas exportadas (.png)
+├── schema.sql                       # Creación de base de datos e importación en MySQL
+├── queries.sql                      # Consultas analíticas avanzadas (CTEs, Window Functions, JOINs)
 ├── analisis_enigh_econometria.ipynb # Notebook interactivo con análisis econométrico y Gini
-├── app.py                     # Aplicación web interactiva en Streamlit + Plotly
-├── requirements.txt           # Dependencias para despliegue en la nube
-├── .gitignore                 # Reglas de exclusión para datos y caché
-└── README.md                  # Documentación ejecutiva del proyecto
+├── app.py                           # Aplicación web interactiva en Streamlit + Plotly
+├── prepare_data.py                  # Script para optimización y preparación del dataset
+├── requirements.txt                 # Dependencias para despliegue en la nube
+├── .gitignore                       # Reglas de exclusión para datos y caché
+└── README.md                        # Documentación ejecutiva del proyecto
 ```
 
 ---
@@ -56,13 +57,13 @@ Utilizando los microdatos oficiales de la **Encuesta Nacional de Ingresos y Gast
 ## 💡 Hallazgos Principales
 
 1. **Coeficiente de Gini Ponderado**: El análisis sobre la muestra expandida refleja la marcada concentración del ingreso en México, confirmando la necesidad de utilizar ponderaciones muestrales para no subestimar la desigualdad.
-2. **Evidencia Empírica de la Ley de Engel**: Los hogares del primer decil (**D1**, menores ingresos) destinan la mayor proporción de su gasto monetario exclusivamente a alimentos, mientras que en el decil superior (**D10**), esta proporción cae drásticamente, liberando presupuesto hacia educación, salud y esparcimiento.
+2. **Evidencia Empírica de la Ley de Engel**: Los hogares del primer decil (**D1**, menores ingresos) destinan más del 50% de su gasto monetario exclusivamente a alimentos, mientras que en el decil superior (**D10**), esta proporción cae drásticamente, liberando presupuesto hacia educación y esparcimiento.
 3. **Perspectiva Regional (Jalisco)**: Jalisco muestra un ingreso promedio trimestral superior a la media nacional, acompañado de un menor porcentaje relativo de gasto destinado a alimentos de primera necesidad.
-4. **Retorno Educativo**: Existe una relación monotónica creciente entre el nivel de escolaridad del jefe de hogar y el ingreso corriente promedio.
+4. **Retorno Educativo**: Existe una relación monotónica creciente entre el nivel de escolaridad del jefe de hogar y el ingreso corriente promedio, donde la educación superior y posgrado representan el mayor salto cuantitativo.
 
 ---
 
-## 🚀 Instrucciones de Ejecución Local y Despliegue
+## 🚀 Instrucciones de Reproducibilidad y Ejecución
 
 ### 1. Clonar el Repositorio
 ```bash
@@ -70,19 +71,24 @@ git clone https://github.com/jesus09001/enigh-desigualdad-sql-python.git
 cd enigh-desigualdad-sql-python
 ```
 
-### 2. Ejecutar la Aplicación de Streamlit Localmente
+### 2. Configuración y Ejecución del Dashboard en Streamlit
 ```bash
+# Instalar dependencias
 pip install -r requirements.txt
+
+# Preparar datos optimizados
+python prepare_data.py
+
+# Iniciar la aplicación web
 streamlit run app.py
 ```
 
 ---
 
 ## 👨‍💻 Autor
-Copado Crespo Jesus Adahir
 
-**Economista & Científico de Datos**
-- **Perfil**: Especializado en análisis econométrico, inteligencia de negocios, ingeniería de datos y soluciones analíticas.
+**Copado Crespo Jesus Adahir**
+- **Perfil**: Economista y Científico de Datos especializado en análisis econométrico, inteligencia de negocios, ingeniería de datos y soluciones analíticas end-to-end.
+- **LinkedIn**: [Jesus Adahir Copado Crespo](https://www.linkedin.com/in/jesus-adahir-copado-crespo-251748294)
+- **GitHub**: [jesus09001](https://github.com/jesus09001)
 - **Dashboard en Vivo**: [Ver App Web en Streamlit](https://enigh-desigualdad-sql-python-j3zetuydc9ejumv5uatjij.streamlit.app/)
-- **LinkedIn**: www.linkedin.com/in/jesus-adahir-copado-crespo-251748294
-- **GitHub**: https://github.com/jesus09001
