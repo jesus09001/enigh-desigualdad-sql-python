@@ -1,3 +1,11 @@
-# Ignorar archivos CSV dentro de la subcarpeta "data"
+# Ignorar todos los CSV pesados originales dentro de data/
 data/*.csv
 data/**/*.csv
+
+# Ignorar archivos de respaldo y temporales
+*.csv_backup
+data/raw/
+
+# Permitir EXPRESAMENTE los datasets optimizados/compilados en data/
+!data/concentradohogar_clean.csv
+!data/concentradohogar.parquet

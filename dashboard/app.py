@@ -20,34 +20,46 @@ st.markdown("""
 """)
 
 # ---------------------------------------------------------
-# Carga de Datos (con Caché)
+# Carga de Datos (con Caché y Soporte Múltiple)
 # ---------------------------------------------------------
 @st.cache_data
 def load_data():
-    try:
-        # Intentar cargar dataset local
-        df = pd.read_csv("data/concentradohogar.csv")
-    except Exception:
+    paths = [
+        "data/concentradohogar.parquet",
+        "data/concentradohogar_clean.csv",
+        "data/concentradohogar.csv",
+        "concentradohogar.csv"
+    ]
+    
+    df = None
+    for path in paths:
         try:
-            df = pd.read_csv("concentradohogar.csv")
+            if path.endswith(".parquet"):
+                df = pd.read_parquet(path)
+            else:
+                df = pd.read_csv(path)
+            st.success(f"✅ Dataset real cargado exitosamente desde `{path}` ({len(df):,} registros).")
+            break
         except Exception:
-            st.warning("⚠️ No se encontró el archivo 'concentradohogar.csv' en 'data/'. Mostrando datos demostrativos.")
-            # Generar datos demostrativos
-            np.random.seed(42)
-            n = 5000
-            ing = np.random.exponential(scale=25000, size=n) + 3000
-            df = pd.DataFrame({
-                'folioviv': np.random.randint(100000, 999999, size=n),
-                'foliohog': 1,
-                'ubica_geo': np.random.choice([14001, 9001, 15001, 19001], size=n),
-                'factor': np.random.randint(100, 300, size=n),
-                'ing_cor': ing,
-                'gasto_mon': ing * np.random.uniform(0.5, 0.9, size=n),
-                'alimentos': ing * np.random.uniform(0.2, 0.5, size=n),
-                'educa_espa': ing * np.random.uniform(0.05, 0.2, size=n),
-                'transporte': ing * np.random.uniform(0.1, 0.25, size=n),
-                'salud': ing * np.random.uniform(0.02, 0.1, size=n)
-            })
+            continue
+            
+    if df is None:
+        st.warning("⚠️ No se encontró el dataset comprimido en 'data/'. Mostrando datos demostrativos.")
+        np.random.seed(42)
+        n = 5000
+        ing = np.random.exponential(scale=25000, size=n) + 3000
+        df = pd.DataFrame({
+            'folioviv': np.random.randint(100000, 999999, size=n),
+            'foliohog': 1,
+            'ubica_geo': np.random.choice([14001, 9001, 15001, 19001], size=n),
+            'factor': np.random.randint(100, 300, size=n),
+            'ing_cor': ing,
+            'gasto_mon': ing * np.random.uniform(0.5, 0.9, size=n),
+            'alimentos': ing * np.random.uniform(0.2, 0.5, size=n),
+            'educa_espa': ing * np.random.uniform(0.05, 0.2, size=n),
+            'transporte': ing * np.random.uniform(0.1, 0.25, size=n),
+            'salud': ing * np.random.uniform(0.02, 0.1, size=n)
+        })
     
     # Asegurar columna entidad
     if 'entidad' not in df.columns and 'ubica_geo' in df.columns:
