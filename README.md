@@ -7,7 +7,7 @@
 ![Plotly](https://img.shields.io/badge/Plotly-Interactive-3F4F75?style=flat&logo=plotly)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
-> 🌐 **Dashboard Interactivo en Vivo**: [Haz clic aquí para interactuar con la aplicación web en Streamlit](https://enigh-desigualdad-sql-python-j3zetuydc9ejumv5uatjij.streamlit.app/)
+> 🌐 **Dashboard Interactivo en Vivo**: [Haz clic aquí para interactuar con la aplicación web en Streamlit](https://enigh-desigualdad-sql-python-nfd2hisxed9eyezuyxx2oz.streamlit.app/)
 
 ---
 
