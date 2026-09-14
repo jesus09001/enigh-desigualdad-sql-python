@@ -91,4 +91,4 @@ streamlit run app.py
 - **Perfil**: Economista y Científico de Datos especializado en análisis econométrico, inteligencia de negocios, ingeniería de datos y soluciones analíticas end-to-end.
 - **LinkedIn**: [Jesus Adahir Copado Crespo](https://www.linkedin.com/in/jesus-adahir-copado-crespo-251748294)
 - **GitHub**: [jesus09001](https://github.com/jesus09001)
-- **Dashboard en Vivo**: [Ver App Web en Streamlit](https://enigh-desigualdad-sql-python-j3zetuydc9ejumv5uatjij.streamlit.app/)
+- **Dashboard en Vivo**: [Ver App Web en Streamlit](https://enigh-desigualdad-sql-python-nfd2hisxed9eyezuyxx2oz.streamlit.app/)
