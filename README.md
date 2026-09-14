@@ -81,6 +81,7 @@ cd enigh-desigualdad-sql-python
 ---
 
 ##  Autor
+Copado Crespo Jesus Adahir
 
 **Economista & Científico de Datos**
 - **Perfil**: Especializado en análisis econométrico, inteligencia de negocios, ingeniería de datos y desarrollo de soluciones analíticas de extremo a extremo.
